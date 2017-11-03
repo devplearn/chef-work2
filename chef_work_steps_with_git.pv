@@ -754,3 +754,189 @@ nothing to commit, working directory clean
 [root@chefwork chef-repo]#
 [root@chefwork chef-repo]#
 
+
+
+========================== STEP 2
+ Adding Node1 
+
+
+
+
+
+
+
+
+
+[root@chefwork recipes]# vi default.rb
+[root@chefwork recipes]#
+[root@chefwork recipes]# cd ../../
+[root@chefwork cookbooks]# cd ../
+[root@chefwork chef-repo]# git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   cookbooks/test/recipes/default.rb
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@chefwork chef-repo]# git add -A
+[root@chefwork chef-repo]# git commit -m "test cookbook updated with index.php file"
+[master ba2219b] test cookbook updated with index.php file
+ 1 file changed, 5 insertions(+)
+[root@chefwork chef-repo]# git push -u origin master
+Counting objects: 11, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 603 bytes | 0 bytes/s, done.
+Total 6 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To git@github.com:devplearn/chef-work2.git
+   82f5942..ba2219b  master -> master
+Branch master set up to track remote branch master from origin.
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# knife cookbook upload test
+Uploading test           [0.1.0]
+Uploaded 1 cookbook.
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# cd cookbooks/test/
+[root@chefwork test]# ls -ltr
+total 20
+-rw-r--r--. 1 root root  742 Nov  3 15:16 metadata.rb
+-rw-r--r--. 1 root root   52 Nov  3 15:16 README.md
+-rw-r--r--. 1 root root 1133 Nov  3 15:16 chefignore
+-rw-r--r--. 1 root root   77 Nov  3 15:16 Berksfile
+-rw-r--r--. 1 root root   70 Nov  3 15:16 LICENSE
+drwxr-xr-x. 3 root root   19 Nov  3 15:16 test
+drwxr-xr-x. 3 root root   40 Nov  3 15:16 spec
+drwxr-xr-x. 2 root root   24 Nov  3 16:09 recipes
+[root@chefwork test]# cat metadata.rb
+name 'test'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'All Rights Reserved'
+description 'Installs/Configures test'
+long_description 'Installs/Configures test'
+version '0.1.0'
+chef_version '>= 12.1' if respond_to?(:chef_version)
+
+# The `issues_url` points to the location where issues for this cookbook are
+# tracked.  A `View Issues` link will be displayed on this cookbook's page when
+# uploaded to a Supermarket.
+#
+# issues_url 'https://github.com/<insert_org_here>/test/issues'
+
+# The `source_url` points to the development repository for this cookbook.  A
+# `View Source` link will be displayed on this cookbook's page when uploaded to
+# a Supermarket.
+#
+# source_url 'https://github.com/<insert_org_here>/test'
+[root@chefwork test]#
+[root@chefwork test]# cd ../
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]# ls -ltr
+total 4
+-rw-r--r--. 1 root root 588 Oct 28 13:53 chefignore
+drwxr-xr-x. 6 root root  88 Nov  3 15:04 starter
+drwxr-xr-x. 6 root root 168 Nov  3 15:16 test
+[root@chefwork cookbooks]# knife bootstrap 10.20.30.110 -x vagrant -P vagrant --sudo -N chefn1
+Creating new client for chefn1
+Creating new node for chefn1
+Connecting to 10.20.30.110
+10.20.30.110 -----> Installing Chef Omnibus (-v 13)
+10.20.30.110 downloading https://omnitruck-direct.chef.io/chef/install.sh
+10.20.30.110   to file /tmp/install.sh.30446/install.sh
+10.20.30.110 trying curl...
+10.20.30.110 el 7 x86_64
+10.20.30.110 Getting information for chef stable 13 for el...
+10.20.30.110 downloading https://omnitruck-direct.chef.io/stable/chef/metadata?v=13&p=el&pv=7&m=x86_64
+10.20.30.110   to file /tmp/install.sh.30713/metadata.txt
+10.20.30.110 trying curl...
+10.20.30.110 sha1       f19afd0abff807727466120f8855a3fe9c2222b6
+10.20.30.110 sha256     87953be104524be28afdb05a65833ee20bc0dfc7383f6dc5bae6b4705778e253
+10.20.30.110 url        https://packages.chef.io/files/stable/chef/13.6.0/el/7/chef-13.6.0-1.el7.x86_64.rpm
+10.20.30.110 version    13.6.0
+10.20.30.110 downloaded metadata file looks valid...
+10.20.30.110 downloading https://packages.chef.io/files/stable/chef/13.6.0/el/7/chef-13.6.0-1.el7.x86_64.rpm
+10.20.30.110   to file /tmp/install.sh.30713/chef-13.6.0-1.el7.x86_64.rpm
+10.20.30.110 trying curl...
+10.20.30.110 Comparing checksum with sha256sum...
+10.20.30.110 Installing chef 13
+10.20.30.110 installing with rpm...
+10.20.30.110 warning: /tmp/install.sh.30713/chef-13.6.0-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+10.20.30.110 Preparing...                          ################################# [100%]
+10.20.30.110 Updating / installing...
+10.20.30.110    1:chef-13.6.0-1.el7                ################################# [100%]
+10.20.30.110 Thank you for installing Chef!
+10.20.30.110 Starting the first Chef Client run...
+10.20.30.110 Starting Chef Client, version 13.6.0
+10.20.30.110 resolving cookbooks for run list: []
+10.20.30.110 Synchronizing Cookbooks:
+10.20.30.110 Installing Cookbook Gems:
+10.20.30.110 Compiling Cookbooks...
+10.20.30.110 [2017-11-03T16:24:53+00:00] WARN: Node chefn1 has an empty run list.
+10.20.30.110 Converging 0 resources
+10.20.30.110
+10.20.30.110 Running handlers:
+10.20.30.110 Running handlers complete
+10.20.30.110 Chef Client finished, 0/0 resources updated in 10 seconds
+[root@chefwork cookbooks]#
+
+
+
+
+NODE1 contains
+
+
+p[root@chefwork chef-repo]# ssh vagrant@10.20.30.110
+vagrant@10.20.30.110's password:
+Last login: Fri Nov  3 16:23:43 2017 from 10.20.30.100
+[vagrant@chefn1 ~]$ cat /etc/chef/client.rb
+chef_server_url  "https://api.chef.io/organizations/qst"
+validation_client_name "chef-validator"
+log_location   STDOUT
+node_name "chefn1"
+
+[vagrant@chefn1 ~]$
+
+
+
+
+=========on Node1
+
+
+[vagrant@chefn1 /]$ sudo chmod -R 777 /var/
+[vagrant@chefn1 /]$ ls -ltr | grep var
+drwxrwxrwx.  19 root root  283 Nov  3 19:20 var
+[vagrant@chefn1 /]$ cd -
+/etc/chef
+[vagrant@chefn1 chef]$ chef-client
+Starting Chef Client, version 13.6.0
+resolving cookbooks for run list: ["test"]
+Synchronizing Cookbooks:
+  - test (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 1 resources
+Recipe: test::default
+  * file[/var/index.php] action create[2017-11-03T19:25:58+00:00] WARN: Could not set uid = 0 on /var/.chef-index20171103-9002-1msd5zg.php, file modes not preserved
+[2017-11-03T19:25:58+00:00] WARN: Could not set gid = 0 on /var/.chef-index20171103-9002-1msd5zg.php, file modes not preserved
+
+    - update content in file /var/index.php from e3b0c4 to 3d079e
+    --- /var/index.php  2017-11-03 19:20:58.409690280 +0000
+    +++ /var/.chef-index20171103-9002-1msd5zg.php       2017-11-03 19:25:58.114526780 +0000
+    @@ -1 +1,2 @@
+    +<html>This is a placeholder for the home page.</html>
+    - change mode from '0777' to '0755'
+    - restore selinux security context
+
+Running handlers:
+Running handlers complete
+Chef Client finished, 1/1 resources updated in 10 seconds
+[vagrant@chefn1 chef]$
+
+
