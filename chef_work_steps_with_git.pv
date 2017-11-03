@@ -940,3 +940,105 @@ Chef Client finished, 1/1 resources updated in 10 seconds
 [vagrant@chefn1 chef]$
 
 
+
+========= Master or workstation
+
+[root@chefwork chef-repo]# cd cookbooks/test/recipes/
+[root@chefwork recipes]# ls -ltr
+total 4
+-rw-r--r--. 1 root root 205 Nov  3 16:09 default.rb
+[root@chefwork recipes]# vi default.rb
+[root@chefwork recipes]# git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   default.rb
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@chefwork recipes]# git add -A
+[root@chefwork recipes]# git commit -m "updated index.php file"                      [master 931bd72] updated index.php file
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[root@chefwork recipes]# git push -u origin master
+Counting objects: 11, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 469 bytes | 0 bytes/s, done.
+Total 6 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+To git@github.com:devplearn/chef-work2.git
+   83e70a9..931bd72  master -> master
+Branch master set up to track remote branch master from origin.
+(reverse-i-search)`kni': ^Cife cookbook upload test                                  [root@chefwork recipes]#
+[root@chefwork recipes]# ls -ltr
+total 4
+-rw-r--r--. 1 root root 218 Nov  3 19:33 default.rb
+[root@chefwork recipes]# cd ../
+[root@chefwork test]# ls 0-ltr^C
+[root@chefwork test]#
+[root@chefwork test]# ls -ltr
+total 20
+-rw-r--r--. 1 root root  742 Nov  3 15:16 metadata.rb
+-rw-r--r--. 1 root root   52 Nov  3 15:16 README.md
+-rw-r--r--. 1 root root 1133 Nov  3 15:16 chefignore
+-rw-r--r--. 1 root root   77 Nov  3 15:16 Berksfile
+-rw-r--r--. 1 root root   70 Nov  3 15:16 LICENSE
+drwxr-xr-x. 3 root root   19 Nov  3 15:16 test
+drwxr-xr-x. 3 root root   40 Nov  3 15:16 spec
+drwxr-xr-x. 2 root root   24 Nov  3 19:33 recipes
+[root@chefwork test]# vi metadata.rb
+[root@chefwork test]#
+[root@chefwork test]#
+[root@chefwork test]# cd ../
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]# knife cookbook upload test                                Uploading test           [0.1.1]
+Uploaded 1 cookbook.
+[root@chefwork cookbooks]#
+
+
+
+
+
+
+
+===============================Node1
+
+
+[vagrant@chefn1 chef]$ ls -ltr /var/index.php
+-rwxr-xr-x. 1 vagrant vagrant 53 Nov  3 19:25 /var/index.php
+[vagrant@chefn1 chef]$ chef-client
+Starting Chef Client, version 13.6.0
+resolving cookbooks for run list: ["test"]
+Synchronizing Cookbooks:
+  - test (0.1.1)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 1 resources
+Recipe: test::default
+  * file[/var/index.php] action create
+    - update content in file /var/index.php from 3d079e to d610c2
+    --- /var/index.php  2017-11-03 19:25:58.114526780 +0000
+    +++ /var/.chef-index20171103-9483-1n1csju.php       2017-11-03 19:35:54.486318247 +0000
+    @@ -1,2 +1,2 @@
+    -<html>This is a placeholder for the home page.</html>
+    +<html>Updated file This is a placeholder for the home page.</html>
+    - restore selinux security context
+
+Running handlers:
+Running handlers complete
+Chef Client finished, 1/1 resources updated in 09 seconds
+(reverse-i-search)`ca': ^Ct /etc/chef/
+[vagrant@chefn1 chef]$ cat /var/index.php
+<html>Updated file This is a placeholder for the home page.</html>[vagrant@chefn1 chef]$
+[vagrant@chefn1 chef]$
+
+
+
+
+
+===============================================
+
+
+
