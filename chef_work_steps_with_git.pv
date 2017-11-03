@@ -1,0 +1,756 @@
+
+login as: vagrant
+vagrant@10.20.30.100's password:
+Last login: Fri Nov  3 14:49:49 2017 from 10.0.2.2
+[vagrant@chefwork ~]$
+[vagrant@chefwork ~]$
+[vagrant@chefwork ~]$
+[vagrant@chefwork ~]$ ping www.google.com
+PING www.google.com (216.58.219.228) 56(84) bytes of data.
+64 bytes from lga25s41-in-f4.1e100.net (216.58.219.228): icmp_seq=1 ttl=53 time=        19.4 ms
+64 bytes from lga25s41-in-f4.1e100.net (216.58.219.228): icmp_seq=2 ttl=53 time=        15.7 ms
+
+64 bytes from lga25s41-in-f4.1e100.net (216.58.219.228): icmp_seq=3 ttl=53 time=        13.9 ms
+^C
+--- www.google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 13.913/16.387/19.468/2.308 ms
+[vagrant@chefwork ~]$
+[vagrant@chefwork ~]$ ping www.google.com
+PING www.google.com (172.217.10.132) 56(84) bytes of data.
+64 bytes from lga34s16-in-f4.1e100.net (172.217.10.132): icmp_seq=1 ttl=52 time=16.0 ms
+64 bytes from lga34s16-in-f4.1e100.net (172.217.10.132): icmp_seq=2 ttl=52 time=15.1 ms
+64 bytes from lga34s16-in-f4.1e100.net (172.217.10.132): icmp_seq=3 ttl=52 time=16.4 ms
+64 bytes from lga34s16-in-f4.1e100.net (172.217.10.132): icmp_seq=4 ttl=52 time=12.8 ms
+^C
+--- www.google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3004ms
+rtt min/avg/max/mdev = 12.801/15.139/16.484/1.428 ms
+[vagrant@chefwork ~]$
+[vagrant@chefwork ~]$
+[vagrant@chefwork ~]$
+[vagrant@chefwork ~]$
+[vagrant@chefwork ~]$
+[vagrant@chefwork ~]$
+[vagrant@chefwork ~]$ sudo su
+[root@chefwork vagrant]#
+[root@chefwork vagrant]#
+[root@chefwork vagrant]#
+[root@chefwork vagrant]# yum install wget
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.tripadvisor.com
+ * extras: mirror.es.its.nyu.edu
+ * updates: mirror.cc.columbia.edu
+Resolving Dependencies
+--> Running transaction check
+---> Package wget.x86_64 0:1.14-15.el7_4.1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================
+ Package         Arch              Version                     Repository          Size
+========================================================================================
+Installing:
+ wget            x86_64            1.14-15.el7_4.1             updates            547 k
+
+Transaction Summary
+========================================================================================
+Install  1 Package
+
+Total download size: 547 k
+Installed size: 2.0 M
+Is this ok [y/d/N]: y
+Downloading packages:
+wget-1.14-15.el7_4.1.x86_64.rpm                                  | 547 kB  00:00:01
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : wget-1.14-15.el7_4.1.x86_64                                          1/1
+  Verifying  : wget-1.14-15.el7_4.1.x86_64                                          1/1
+
+Installed:
+  wget.x86_64 0:1.14-15.el7_4.1
+
+Complete!
+[root@chefwork vagrant]# wget https://packages.chef.io/files/stable/chefdk/2.3.4/el/7/chefdk-2.3.4-1.el7.x86_64.rpm
+--2017-11-03 14:54:00--  https://packages.chef.io/files/stable/chefdk/2.3.4/el/7/chefdk-2.3.4-1.el7.x86_64.rpm
+Resolving packages.chef.io (packages.chef.io)... 151.101.210.110
+Connecting to packages.chef.io (packages.chef.io)|151.101.210.110|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 104885338 (100M) [application/x-rpm]
+Saving to: ‘chefdk-2.3.4-1.el7.x86_64.rpm’
+
+100%[==============================================>] 104,885,338 2.71MB/s   in 31s
+
+2017-11-03 14:54:32 (3.19 MB/s) - ‘chefdk-2.3.4-1.el7.x86_64.rpm’ saved [104885338/104885338]
+
+[root@chefwork vagrant]#
+(reverse-i-search)`p': wget https://packages.chef.io/files/stable/chefdk/2.3.4/el/7/chefdk-2.3.4-1.el7.x86_64.r^C
+[root@chefwork vagrant]# ping www.google.com
+PING www.google.com (172.217.10.36) 56(84) bytes of data.
+64 bytes from lga34s13-in-f4.1e100.net (172.217.10.36): icmp_seq=1 ttl=53 time=15.4 ms
+64 bytes from lga34s13-in-f4.1e100.net (172.217.10.36): icmp_seq=2 ttl=53 time=16.3 ms
+64 bytes from lga34s13-in-f4.1e100.net (172.217.10.36): icmp_seq=3 ttl=53 time=20.3 ms
+^C
+--- www.google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 15.401/17.363/20.384/2.172 ms
+[root@chefwork vagrant]#
+[root@chefwork vagrant]#
+[root@chefwork vagrant]# rpm -ivh chefdk-2.3.4-1.el7.x86_64.rpm ^C
+[root@chefwork vagrant]#
+[root@chefwork vagrant]#
+[root@chefwork vagrant]# cd
+[root@chefwork ~]#
+[root@chefwork ~]#
+[root@chefwork ~]# ls ltr^C
+[root@chefwork ~]# ls -ltr
+total 16
+-rw-------. 1 root root 5389 Sep 11 18:39 original-ks.cfg
+-rw-------. 1 root root 5720 Sep 11 18:39 anaconda-ks.cfg
+[root@chefwork ~]# mv ~/che^C
+[root@chefwork ~]#
+[root@chefwork ~]# cd -
+/home/vagrant
+[root@chefwork vagrant]# mv chefdk-2.3.4-1.el7.x86_64.rpm ~/
+[root@chefwork vagrant]# cd ~
+[root@chefwork ~]# ls -ltr
+total 102444
+-rw-------. 1 root root      5389 Sep 11 18:39 original-ks.cfg
+-rw-------. 1 root root      5720 Sep 11 18:39 anaconda-ks.cfg
+-rw-r--r--. 1 root root 104885338 Sep 22 17:26 chefdk-2.3.4-1.el7.x86_64.rpm
+[root@chefwork ~]# rpm -ivh chefdk-2.3.4-1.el7.x86_64.rpm^C
+[root@chefwork ~]#
+[root@chefwork ~]# ping www.google.com
+PING www.google.com (172.217.12.164) 56(84) bytes of data.
+64 bytes from lga25s62-in-f4.1e100.net (172.217.12.164): icmp_seq=1 ttl=53 time=19.3 ms
+64 bytes from lga25s62-in-f4.1e100.net (172.217.12.164): icmp_seq=2 ttl=53 time=23.0 ms
+^C
+--- www.google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 19.370/21.201/23.032/1.831 ms
+[root@chefwork ~]#
+[root@chefwork ~]# rpm -ivh chefdk-2.3.4-1.el7.x86_64.rpm
+warning: chefdk-2.3.4-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:chefdk-2.3.4-1.el7               ################################# [100%]
+Thank you for installing Chef Development Kit!
+[root@chefwork ~]#
+[root@chefwork ~]# knife node list
+WARNING: No knife configuration file found
+WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+ERROR: Your private key could not be loaded from /etc/chef/client.pem
+Check your configuration file and ensure that your private key is readable
+[root@chefwork ~]# chef verify
+[WARN] This is an internal command used by the ChefDK development team. If you are a ChefDK user, please do not run it.
+Running verification for component 'berkshelf'
+Running verification for component 'test-kitchen'
+Running verification for component 'tk-policyfile-provisioner'
+Running verification for component 'chef-client'
+Running verification for component 'chef-dk'
+Running verification for component 'chef-provisioning'
+Running verification for component 'chefspec'
+Running verification for component 'generated-cookbooks-pass-chefspec'
+Running verification for component 'fauxhai'
+Running verification for component 'knife-spork'
+Running verification for component 'kitchen-vagrant'
+Running verification for component 'package installation'
+Running verification for component 'openssl'
+Running verification for component 'inspec'
+Running verification for component 'delivery-cli'
+Running verification for component 'git'
+Running verification for component 'opscode-pushy-client'
+Running verification for component 'chef-sugar'
+......................................./opt/chefdk/embedded/lib/ruby/gems/2.4.0/gems/chef-provisioning-aws-2.2.2/lib/chef/resource/aws_route53_record_set.rb:48: warning: constant ::Fixnum is deprecated
+..................................................................
+---------------------------------------------
+Verification of component 'fauxhai' succeeded.
+Verification of component 'kitchen-vagrant' succeeded.
+Verification of component 'openssl' succeeded.
+Verification of component 'delivery-cli' succeeded.
+Verification of component 'test-kitchen' succeeded.
+Verification of component 'git' succeeded.
+Verification of component 'berkshelf' succeeded.
+Verification of component 'chefspec' succeeded.
+Verification of component 'knife-spork' succeeded.
+Verification of component 'inspec' succeeded.
+Verification of component 'tk-policyfile-provisioner' succeeded.
+Verification of component 'opscode-pushy-client' succeeded.
+Verification of component 'chef-dk' succeeded.
+Verification of component 'chef-client' succeeded.
+Verification of component 'chef-sugar' succeeded.
+Verification of component 'chef-provisioning' succeeded.
+Verification of component 'generated-cookbooks-pass-chefspec' succeeded.
+Verification of component 'package installation' succeeded.
+[root@chefwork ~]# ping www.google.com
+PING www.google.com (172.217.6.196) 56(84) bytes of data.
+64 bytes from lga25s54-in-f4.1e100.net (172.217.6.196): icmp_seq=1 ttl=52 time=17.1 ms
+64 bytes from lga25s54-in-f4.1e100.net (172.217.6.196): icmp_seq=2 ttl=52 time=22.8 ms
+^C
+--- www.google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 17.144/20.012/22.881/2.871 ms
+[root@chefwork ~]#
+[root@chefwork ~]# ping www.google.com^C
+[root@chefwork ~]#
+[root@chefwork ~]# ls -ltr
+total 102444
+-rw-------. 1 root root      5389 Sep 11 18:39 original-ks.cfg
+-rw-------. 1 root root      5720 Sep 11 18:39 anaconda-ks.cfg
+-rw-r--r--. 1 root root 104885338 Sep 22 17:26 chefdk-2.3.4-1.el7.x86_64.rpm
+drwxr-xr-x. 5 root root        84 Nov  3 15:04 chef-repo
+[root@chefwork ~]# ping www.google.com
+PING www.google.com (172.217.10.36) 56(84) bytes of data.
+64 bytes from lga34s13-in-f4.1e100.net (172.217.10.36): icmp_seq=1 ttl=53 time=15.1 ms
+64 bytes from lga34s13-in-f4.1e100.net (172.217.10.36): icmp_seq=2 ttl=53 time=16.6 ms
+64 bytes from lga34s13-in-f4.1e100.net (172.217.10.36): icmp_seq=3 ttl=53 time=12.8 ms
+64 bytes from lga34s13-in-f4.1e100.net (172.217.10.36): icmp_seq=4 ttl=53 time=14.9 ms
+^C
+--- www.google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3006ms
+rtt min/avg/max/mdev = 12.820/14.901/16.677/1.383 ms
+[root@chefwork ~]#
+[root@chefwork ~]#
+[root@chefwork ~]# ls -la
+total 102464
+dr-xr-x---.  6 root root       239 Nov  3 15:04 .
+dr-xr-xr-x. 18 root root       239 Nov  3 14:40 ..
+-rw-------.  1 root root      5720 Sep 11 18:39 anaconda-ks.cfg
+-rw-r--r--.  1 root root        18 Dec 29  2013 .bash_logout
+-rw-r--r--.  1 root root       176 Dec 29  2013 .bash_profile
+-rw-r--r--.  1 root root       176 Dec 29  2013 .bashrc
+drwxr-xr-x.  3 root root        23 Nov  3 15:01 .berkshelf
+drwxr-xr-x.  3 root root        19 Nov  3 15:01 .bundle
+-rw-r--r--.  1 root root 104885338 Sep 22 17:26 chefdk-2.3.4-1.el7.x86_64.rpm
+drwxr-xr-x.  5 root root        84 Nov  3 15:04 chef-repo
+-rw-r--r--.  1 root root       100 Dec 29  2013 .cshrc
+drwxr-xr-x.  3 root root        19 Nov  3 15:01 .inspec
+-rw-------.  1 root root      5389 Sep 11 18:39 original-ks.cfg
+-rw-r--r--.  1 root root       129 Dec 29  2013 .tcshrc
+[root@chefwork ~]# cd chef-repo/
+[root@chefwork chef-repo]# ls -la
+total 8
+drwxr-xr-x. 5 root root   84 Nov  3 15:04 .
+dr-xr-x---. 6 root root  239 Nov  3 15:04 ..
+drwxr-xr-x. 2 root root   43 Nov  3 15:04 .chef
+drwxr-xr-x. 3 root root   39 Nov  3 15:04 cookbooks
+-rw-r--r--. 1 root root  495 Oct 28 13:53 .gitignore
+-rw-r--r--. 1 root root 2341 Oct 28 13:53 README.md
+drwxr-xr-x. 2 root root   24 Nov  3 15:04 roles
+[root@chefwork chef-repo]# cat .chef/
+devprabhu.pem  knife.rb
+[root@chefwork chef-repo]# cat .chef/
+devprabhu.pem  knife.rb
+[root@chefwork chef-repo]# cat .chef/knife.rb
+# See http://docs.chef.io/config_rb_knife.html for more information on knife configuration options
+
+current_dir = File.dirname(__FILE__)
+log_level                :info
+log_location             STDOUT
+node_name                "devprabhu"
+client_key               "#{current_dir}/devprabhu.pem"
+chef_server_url          "https://api.chef.io/organizations/qst"
+cookbook_path            ["#{current_dir}/../cookbooks"]
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# knife node list
+
+[root@chefwork chef-repo]# ping www.google.com
+PING www.google.com (172.217.10.132) 56(84) bytes of data.
+64 bytes from lga34s16-in-f4.1e100.net (172.217.10.132): icmp_seq=1 ttl=52 time=17.1 ms
+64 bytes from lga34s16-in-f4.1e100.net (172.217.10.132): icmp_seq=2 ttl=52 time=20.9 ms
+^C
+--- www.google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 17.107/19.038/20.969/1.931 ms
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# knife help list
+Available help topics are:
+  bootstrap
+  chef-shell
+  client
+  configure
+  cookbook
+  cookbook-site
+  data-bag
+  delete
+  deps
+  diff
+  download
+  edit
+  environment
+  exec
+  index-rebuild
+  knife
+  list
+  node
+  raw
+  recipe-list
+  role
+  search
+  show
+  ssh
+  status
+  tag
+  upload
+  user
+  xargs
+[root@chefwork chef-repo]# ping www.google.com
+PING www.google.com (172.217.10.132) 56(84) bytes of data.
+64 bytes from lga34s16-in-f4.1e100.net (172.217.10.132): icmp_seq=1 ttl=52 time=56.3 ms
+64 bytes from lga34s16-in-f4.1e100.net (172.217.10.132): icmp_seq=2 ttl=52 time=32.3 ms
+64 bytes from lga34s16-in-f4.1e100.net (172.217.10.132): icmp_seq=3 ttl=52 time=13.5 ms
+^C
+--- www.google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 13.552/34.099/56.367/17.522 ms
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# ls -la
+total 8
+drwxr-xr-x. 5 root root   84 Nov  3 15:04 .
+dr-xr-x---. 6 root root  239 Nov  3 15:04 ..
+drwxr-xr-x. 2 root root   43 Nov  3 15:04 .chef
+drwxr-xr-x. 3 root root   39 Nov  3 15:04 cookbooks
+-rw-r--r--. 1 root root  495 Oct 28 13:53 .gitignore
+-rw-r--r--. 1 root root 2341 Oct 28 13:53 README.md
+drwxr-xr-x. 2 root root   24 Nov  3 15:04 roles
+[root@chefwork chef-repo]# cat .chef/
+devprabhu.pem  knife.rb
+[root@chefwork chef-repo]# cat .chef/knife.rb
+# See http://docs.chef.io/config_rb_knife.html for more information on knife configuration options
+
+current_dir = File.dirname(__FILE__)
+log_level                :info
+log_location             STDOUT
+node_name                "devprabhu"
+client_key               "#{current_dir}/devprabhu.pem"
+chef_server_url          "https://api.chef.io/organizations/qst"
+cookbook_path            ["#{current_dir}/../cookbooks"]
+[root@chefwork chef-repo]# knife cookbook
+FATAL: Cannot find subcommand for: 'cookbook'
+Available cookbook subcommands: (for details, knife SUB-COMMAND --help)
+
+** COOKBOOK COMMANDS **
+knife cookbook bulk delete REGEX (options)
+Usage: /bin/knife (options)
+knife cookbook delete COOKBOOK VERSION (options)
+knife cookbook download COOKBOOK [VERSION] (options)
+knife cookbook list (options)
+knife cookbook metadata COOKBOOK (options)
+knife cookbook metadata from FILE (options)
+knife cookbook show COOKBOOK [VERSION] [PART] [FILENAME] (options)
+knife cookbook test [COOKBOOKS...] (options)
+knife cookbook upload [COOKBOOKS...] (options)
+
+[root@chefwork chef-repo]# ping www.google.com
+PING www.google.com (172.217.6.196) 56(84) bytes of data.
+64 bytes from lga25s54-in-f4.1e100.net (172.217.6.196): icmp_seq=1 ttl=52 time=25.5 ms
+64 bytes from lga25s54-in-f4.1e100.net (172.217.6.196): icmp_seq=2 ttl=52 time=15.7 ms
+^C
+--- www.google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 15.724/20.647/25.571/4.925 ms
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# pwd
+/root/chef-repo
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# ls -ltr
+total 4
+-rw-r--r--. 1 root root 2341 Oct 28 13:53 README.md
+drwxr-xr-x. 3 root root   39 Nov  3 15:04 cookbooks
+drwxr-xr-x. 2 root root   24 Nov  3 15:04 roles
+[root@chefwork chef-repo]# chef generate cookbook ./cookbooks/test
+Generating cookbook test
+- Ensuring correct cookbook file content
+- Ensuring delivery configuration
+- Ensuring correct delivery build cookbook content
+
+Your cookbook is ready. Type `cd ./cookbooks/test` to enter it.
+
+There are several commands you can run to get started locally developing and testing your cookbook.
+Type `delivery local --help` to see a full list.
+
+Why not start by writing a test? Tests for the default recipe are stored at:
+
+test/smoke/default/default_test.rb
+
+If you'd prefer to dive right in, the default recipe can be found at:
+
+recipes/default.rb
+
+[root@chefwork chef-repo]# ls -ltr ./cookbooks/test/
+total 20
+-rw-r--r--. 1 root root  742 Nov  3 15:16 metadata.rb
+-rw-r--r--. 1 root root   52 Nov  3 15:16 README.md
+-rw-r--r--. 1 root root 1133 Nov  3 15:16 chefignore
+-rw-r--r--. 1 root root   77 Nov  3 15:16 Berksfile
+-rw-r--r--. 1 root root   70 Nov  3 15:16 LICENSE
+drwxr-xr-x. 3 root root   19 Nov  3 15:16 test
+drwxr-xr-x. 3 root root   40 Nov  3 15:16 spec
+drwxr-xr-x. 2 root root   24 Nov  3 15:16 recipes
+[root@chefwork chef-repo]# ping www.google.com
+PING www.google.com (172.217.12.164) 56(84) bytes of data.
+64 bytes from lga25s62-in-f4.1e100.net (172.217.12.164): icmp_seq=1 ttl=53 time=19.6 ms
+64 bytes from lga25s62-in-f4.1e100.net (172.217.12.164): icmp_seq=2 ttl=53 time=21.8 ms
+^C
+--- www.google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 19.660/20.745/21.830/1.085 ms
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# git init
+bash: git: command not found
+[root@chefwork chef-repo]# wget git -y
+wget: invalid option -- 'y'
+Usage: wget [OPTION]... [URL]...
+
+Try `wget --help' for more options.
+[root@chefwork chef-repo]# wget git -y^C
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# yum install git -y
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.tripadvisor.com
+ * extras: mirror.es.its.nyu.edu
+ * updates: mirror.cc.columbia.edu
+Resolving Dependencies
+--> Running transaction check
+---> Package git.x86_64 0:1.8.3.1-12.el7_4 will be installed
+--> Processing Dependency: perl-Git = 1.8.3.1-12.el7_4 for package: git-1.8.3.1-12.el7_4.x86_64
+--> Processing Dependency: perl(Term::ReadKey) for package: git-1.8.3.1-12.el7_4.x86_64
+--> Processing Dependency: perl(Git) for package: git-1.8.3.1-12.el7_4.x86_64
+--> Processing Dependency: perl(Error) for package: git-1.8.3.1-12.el7_4.x86_64
+--> Processing Dependency: libgnome-keyring.so.0()(64bit) for package: git-1.8.3.1-12.el7_4.x86_64
+--> Running transaction check
+---> Package libgnome-keyring.x86_64 0:3.12.0-1.el7 will be installed
+---> Package perl-Error.noarch 1:0.17020-2.el7 will be installed
+---> Package perl-Git.noarch 0:1.8.3.1-12.el7_4 will be installed
+---> Package perl-TermReadKey.x86_64 0:2.30-20.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================
+ Package                  Arch           Version                  Repository       Size
+========================================================================================
+Installing:
+ git                      x86_64         1.8.3.1-12.el7_4         updates         4.4 M
+Installing for dependencies:
+ libgnome-keyring         x86_64         3.12.0-1.el7             base            109 k
+ perl-Error               noarch         1:0.17020-2.el7          base             32 k
+ perl-Git                 noarch         1.8.3.1-12.el7_4         updates          53 k
+ perl-TermReadKey         x86_64         2.30-20.el7              base             31 k
+
+Transaction Summary
+========================================================================================
+Install  1 Package (+4 Dependent packages)
+
+Total download size: 4.6 M
+Installed size: 23 M
+Downloading packages:
+(1/5): perl-Error-0.17020-2.el7.noarch.rpm                       |  32 kB  00:00:00
+(2/5): libgnome-keyring-3.12.0-1.el7.x86_64.rpm                  | 109 kB  00:00:00
+(3/5): perl-Git-1.8.3.1-12.el7_4.noarch.rpm                      |  53 kB  00:00:00
+(4/5): perl-TermReadKey-2.30-20.el7.x86_64.rpm                   |  31 kB  00:00:00
+(5/5): git-1.8.3.1-12.el7_4.x86_64.rpm                           | 4.4 MB  00:00:01
+----------------------------------------------------------------------------------------
+Total                                                      2.3 MB/s | 4.6 MB  00:02
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+Warning: RPMDB altered outside of yum.
+  Installing : 1:perl-Error-0.17020-2.el7.noarch                                    1/5
+  Installing : perl-TermReadKey-2.30-20.el7.x86_64                                  2/5
+  Installing : libgnome-keyring-3.12.0-1.el7.x86_64                                 3/5
+  Installing : perl-Git-1.8.3.1-12.el7_4.noarch                                     4/5
+  Installing : git-1.8.3.1-12.el7_4.x86_64                                          5/5
+  Verifying  : git-1.8.3.1-12.el7_4.x86_64                                          1/5
+  Verifying  : 1:perl-Error-0.17020-2.el7.noarch                                    2/5
+  Verifying  : libgnome-keyring-3.12.0-1.el7.x86_64                                 3/5
+  Verifying  : perl-Git-1.8.3.1-12.el7_4.noarch                                     4/5
+  Verifying  : perl-TermReadKey-2.30-20.el7.x86_64                                  5/5
+
+Installed:
+  git.x86_64 0:1.8.3.1-12.el7_4
+
+Dependency Installed:
+  libgnome-keyring.x86_64 0:3.12.0-1.el7      perl-Error.noarch 1:0.17020-2.el7
+  perl-Git.noarch 0:1.8.3.1-12.el7_4          perl-TermReadKey.x86_64 0:2.30-20.el7
+
+Complete!
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# ping www.google.com
+PING www.google.com (216.58.219.196) 56(84) bytes of data.
+64 bytes from lga25s40-in-f4.1e100.net (216.58.219.196): icmp_seq=1 ttl=53 time=19.0 ms
+64 bytes from lga25s40-in-f4.1e100.net (216.58.219.196): icmp_seq=2 ttl=53 time=15.5 ms
+^C
+--- www.google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 15.570/17.288/19.006/1.718 ms
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# git init
+Initialized empty Git repository in /root/chef-repo/.git/
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# cat .git/config
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+[root@chefwork chef-repo]# git config --global user.email "you@example.com"
+[root@chefwork chef-repo]# git config --global user.name "chefrepow"
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       .chef/
+#       .gitignore
+#       README.md
+#       cookbooks/
+#       roles/
+nothing added to commit but untracked files present (use "git add" to track)
+[root@chefwork chef-repo]# git add -A
+[root@chefwork chef-repo]# git commit -m "Chef Repo Files Commited^C
+[root@chefwork chef-repo]# git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#       new file:   .chef/knife.rb
+#       new file:   .gitignore
+#       new file:   README.md
+#       new file:   cookbooks/chefignore
+#       new file:   cookbooks/starter/attributes/default.rb
+#       new file:   cookbooks/starter/files/default/sample.txt
+#       new file:   cookbooks/starter/metadata.rb
+#       new file:   cookbooks/starter/recipes/default.rb
+#       new file:   cookbooks/starter/templates/default/sample.erb
+#       new file:   cookbooks/test/.delivery/build_cookbook/.kitchen.yml
+#       new file:   cookbooks/test/.delivery/build_cookbook/Berksfile
+#       new file:   cookbooks/test/.delivery/build_cookbook/LICENSE
+#       new file:   cookbooks/test/.delivery/build_cookbook/README.md
+#       new file:   cookbooks/test/.delivery/build_cookbook/chefignore
+#       new file:   cookbooks/test/.delivery/build_cookbook/data_bags/keys/delivery_builder_keys.json
+#       new file:   cookbooks/test/.delivery/build_cookbook/metadata.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/default.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/deploy.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/functional.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/lint.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/provision.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/publish.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/quality.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/security.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/smoke.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/syntax.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/recipes/unit.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/secrets/fakey-mcfakerton
+#       new file:   cookbooks/test/.delivery/build_cookbook/test/fixtures/cookbooks/test/metadata.rb
+#       new file:   cookbooks/test/.delivery/build_cookbook/test/fixtures/cookbooks/test/recipes/default.rb
+#       new file:   cookbooks/test/.delivery/config.json
+#       new file:   cookbooks/test/.delivery/project.toml
+#       new file:   cookbooks/test/.kitchen.yml
+#       new file:   cookbooks/test/Berksfile
+#       new file:   cookbooks/test/LICENSE
+#       new file:   cookbooks/test/README.md
+#       new file:   cookbooks/test/chefignore
+#       new file:   cookbooks/test/metadata.rb
+#       new file:   cookbooks/test/recipes/default.rb
+#       new file:   cookbooks/test/spec/spec_helper.rb
+#       new file:   cookbooks/test/spec/unit/recipes/default_spec.rb
+#       new file:   cookbooks/test/test/smoke/default/default_test.rb
+#       new file:   roles/starter.rb
+#
+[root@chefwork chef-repo]# git commit -m "Chef Repo Files Commited"
+[master (root-commit) f97cb37] Chef Repo Files Commited
+ 43 files changed, 861 insertions(+)
+ create mode 100644 .chef/knife.rb
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+ create mode 100644 cookbooks/chefignore
+ create mode 100644 cookbooks/starter/attributes/default.rb
+ create mode 100644 cookbooks/starter/files/default/sample.txt
+ create mode 100644 cookbooks/starter/metadata.rb
+ create mode 100644 cookbooks/starter/recipes/default.rb
+ create mode 100644 cookbooks/starter/templates/default/sample.erb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/.kitchen.yml
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/Berksfile
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/LICENSE
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/README.md
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/chefignore
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/data_bags/keys/delivery_builder_keys.json
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/metadata.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/default.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/deploy.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/functional.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/lint.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/provision.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/publish.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/quality.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/security.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/smoke.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/syntax.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/recipes/unit.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/secrets/fakey-mcfakerton
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/test/fixtures/cookbooks/test/metadata.rb
+ create mode 100644 cookbooks/test/.delivery/build_cookbook/test/fixtures/cookbooks/test/recipes/default.rb
+ create mode 100644 cookbooks/test/.delivery/config.json
+ create mode 100644 cookbooks/test/.delivery/project.toml
+ create mode 100644 cookbooks/test/.kitchen.yml
+ create mode 100644 cookbooks/test/Berksfile
+ create mode 100644 cookbooks/test/LICENSE
+ create mode 100644 cookbooks/test/README.md
+ create mode 100644 cookbooks/test/chefignore
+ create mode 100644 cookbooks/test/metadata.rb
+ create mode 100644 cookbooks/test/recipes/default.rb
+ create mode 100644 cookbooks/test/spec/spec_helper.rb
+ create mode 100644 cookbooks/test/spec/unit/recipes/default_spec.rb
+ create mode 100644 cookbooks/test/test/smoke/default/default_test.rb
+ create mode 100644 roles/starter.rb
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# ping www.google.com
+PING www.google.com (172.217.10.228) 56(84) bytes of data.
+64 bytes from lga25s59-in-f4.1e100.net (172.217.10.228): icmp_seq=1 ttl=52 time=16.8 ms
+64 bytes from lga25s59-in-f4.1e100.net (172.217.10.228): icmp_seq=2 ttl=52 time=15.8 ms
+64 bytes from lga25s59-in-f4.1e100.net (172.217.10.228): icmp_seq=3 ttl=52 time=14.2 ms
+^C
+--- www.google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2006ms
+rtt min/avg/max/mdev = 14.227/15.635/16.831/1.073 ms
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# ssh-keygen^C
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# git status
+# On branch master
+nothing to commit, working directory clean
+[root@chefwork chef-repo]# ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+Created directory '/root/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:nc2Ma5xqADkVJRfFKbQtaOKCH+n8NiL3bgctY5FpE/Q root@chefwork
+The key's randomart image is:
++---[RSA 2048]----+
+|   .. o+=+..     |
+|    ...+.oo      |
+|    .*E o..      |
+| . oXo   o *     |
+|. +..*  S + +    |
+| + o= o  . o     |
+|  +. + .  =      |
+|. o.+ . .o       |
+| o *+o ..        |
++----[SHA256]-----+
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# cat ../.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+PcXDLtr84iPF+knoELI9FNXzp0SUFgauFqp/x5/xkLPCTIiWF4iio5cipP7/S4qJEf0hGOBNHIUS1LJZcx6nXpTA70ogf8YP8E7oQ5+tMdLyp1Ox7hDLcy1q8y13q4sc4VrMaj0VlZWa6GvOkLKhoSuKOdPP4hDXqSagQYwC3MilIKuE33T86avQOgGFQ55936QV/NK8KclEDvpsLTNpYzHHdEDmG7Q1gZ2pbzPsW0vfjg29hHITvLLZLYCfaSiv6ZiCn+0y7+ClWEF1hTZkdxpanynsQn6LsW6zDH33Ca140CS//7JvNwPL3mB1gwesWZkwLSQSibWvLmBkf183 root@chefwork
+[root@chefwork chef-repo]# git remote add origin git@github.com:devplearn/chef-work2.git
+[root@chefwork chef-repo]# git push -u origin master
+The authenticity of host 'github.com (192.30.253.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+RSA key fingerprint is MD5:16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.
+Counting objects: 72, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (49/49), done.
+Writing objects: 100% (72/72), 13.14 KiB | 0 bytes/s, done.
+Total 72 (delta 11), reused 0 (delta 0)
+remote: Resolving deltas: 100% (11/11), done.
+To git@github.com:devplearn/chef-work2.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# vi .git
+.git/       .gitignore
+[root@chefwork chef-repo]# vi .git
+.git/       .gitignore
+[root@chefwork chef-repo]# vi .gitignore
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# ls -la
+total 8
+drwxr-xr-x. 6 root root   96 Nov  3 15:35 .
+dr-xr-x---. 7 root root  269 Nov  3 15:26 ..
+drwxr-xr-x. 2 root root   43 Nov  3 15:04 .chef
+drwxr-xr-x. 4 root root   51 Nov  3 15:16 cookbooks
+drwxr-xr-x. 8 root root  166 Nov  3 15:28 .git
+-rw-r--r--. 1 root root  507 Nov  3 15:35 .gitignore
+-rw-r--r--. 1 root root 2341 Oct 28 13:53 README.md
+drwxr-xr-x. 2 root root   24 Nov  3 15:04 roles
+[root@chefwork chef-repo]# touch new.txt test.pem
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   .gitignore
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@chefwork chef-repo]# git commit -a
+[master c093190] updated giignore file
+ 1 file changed, 2 insertions(+)
+[root@chefwork chef-repo]# git commit -^C
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+nothing to commit, working directory clean
+(reverse-i-search)`pub': cat ../.ssh/id_rsa.^Cb
+[root@chefwork chef-repo]#
+(reverse-i-search)`pub': cat ../.ssh/id_rsa.^Cb
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# git push -u origin master
+Warning: Permanently added the RSA host key for IP address '192.30.253.113' to the list of known hosts.
+Counting objects: 5, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 300 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To git@github.com:devplearn/chef-work2.git
+   f97cb37..c093190  master -> master
+Branch master set up to track remote branch master from origin.
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# git status
+# On branch master
+nothing to commit, working directory clean
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+
