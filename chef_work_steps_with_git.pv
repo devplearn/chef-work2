@@ -1102,3 +1102,310 @@ Connecting to 10.20.30.120
 
 
 
+
+
+ot@chefwork cookbooks]# ls -ltr
+total 88
+drwxr-xr-x. 8 vagrant vagrant  4096 May 24  2017 java
+-rw-r--r--. 1 root    root      588 Oct 28 13:53 chefignore
+drwxr-xr-x. 6 root    root       88 Nov  3 15:04 starter
+drwxr-xr-x. 6 root    root      168 Nov  3 19:34 test
+drwxr-xr-x. 7 root    root      202 Nov  3 19:59 git_cookbook
+drwxr-xr-x. 7 root    root      171 Nov  3 20:16 iptables
+drwxr-xr-x. 7 root    root      199 Nov  6 10:47 apache
+drwxr-xr-x. 2 root    root       62 Nov 23 13:36 BAK.pv
+-rw-------. 1 root    root     9723 Nov 23 13:37 openssl-7.1.0.tar.gz
+-rw-------. 1 root    root    38104 Nov 23 13:37 java-1.50.0.tar.gz
+-rw-------. 1 root    root     7597 Nov 23 13:38 chef-sugar-3.6.0.tar.gz
+-rw-------. 1 root    root    19923 Nov 23 13:38 apt-6.1.4.tar.gz
+drwxr-xr-x. 6 root    root      195 Nov 23 13:39 openssl
+drwxr-xr-x. 8 root    root      184 Nov 23 13:39 apt
+drwxr-xr-x. 3 root    root      102 Nov 23 13:39 chef-sugar
+[root@chefwork cookbooks]# rm -rf *tar.gz^C
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]#  knife cookbook upload apt
+Uploading apt            [6.1.4]
+Uploaded 1 cookbook.
+[root@chefwork cookbooks]#  knife cookbook upload chef-sugar
+Uploading chef-sugar     [3.6.0]
+Uploaded 1 cookbook.
+[root@chefwork cookbooks]#  knife cookbook upload java
+Uploading java           [1.50.0]
+ERROR: Cookbook java depends on cookbooks which are not currently
+ERROR: being uploaded and cannot be found on the server.
+ERROR: The missing cookbook(s) are: 'windows' version '>= 0.0.0', 'homebrew' version '>= 0.0.0'
+[root@chefwork cookbooks]# knife cookbook site download windows
+Downloading windows from Supermarket at version 3.4.0 to /root/chef-repo/cookbooks/windows-3.4.0.tar.gz
+Cookbook saved: /root/chef-repo/cookbooks/windows-3.4.0.tar.gz
+[root@chefwork cookbooks]# knife cookbook site download homebrew
+Downloading homebrew from Supermarket at version 4.2.0 to /root/chef-repo/cookbooks/homebrew-4.2.0.tar.gz
+Cookbook saved: /root/chef-repo/cookbooks/homebrew-4.2.0.tar.gz
+[root@chefwork cookbooks]# tar -xvf homebrew-4.2.0.tar.gz
+homebrew/README.md
+homebrew/CHANGELOG.md
+homebrew/CONTRIBUTING.md
+homebrew/MAINTAINERS.md
+homebrew/metadata.json
+homebrew/attributes/default.rb
+homebrew/libraries/helpers.rb
+homebrew/libraries/matchers.rb
+homebrew/recipes/cask.rb
+homebrew/recipes/default.rb
+homebrew/recipes/install_casks.rb
+homebrew/recipes/install_formulas.rb
+homebrew/recipes/install_taps.rb
+homebrew/resources/cask.rb
+homebrew/resources/tap.rb
+[root@chefwork cookbooks]# tar -xvf windows-3.4.0.tar.gz
+windows/.foodcritic
+windows/README.md
+windows/CHANGELOG.md
+windows/CONTRIBUTING.md
+windows/MAINTAINERS.md
+windows/metadata.json
+windows/attributes/default.rb
+windows/files/dism_features.rb
+windows/libraries/matchers.rb
+windows/libraries/wmi_helper.rb
+windows/libraries/version_helper.rb
+windows/libraries/powershell_helper.rb
+windows/libraries/windows_privileged.rb
+windows/libraries/version.rb
+windows/libraries/registry_helper.rb
+windows/libraries/windows_helper.rb
+windows/providers/dns.rb
+windows/recipes/default.rb
+windows/resources/feature_dism.rb
+windows/resources/printer.rb
+windows/resources/path.rb
+windows/resources/shortcut.rb
+windows/resources/share.rb
+windows/resources/pagefile.rb
+windows/resources/feature_powershell.rb
+windows/resources/certificate_binding.rb
+windows/resources/auto_run.rb
+windows/resources/feature_servermanagercmd.rb
+windows/resources/http_acl.rb
+windows/resources/font.rb
+windows/resources/feature.rb
+windows/resources/certificate.rb
+windows/resources/dns.rb
+windows/resources/zipfile.rb
+windows/resources/printer_port.rb
+windows/resources/task.rb
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]#  knife cookbook upload windows
+Uploading windows        [3.4.0]
+ERROR: Cookbook windows depends on cookbooks which are not currently
+ERROR: being uploaded and cannot be found on the server.
+ERROR: The missing cookbook(s) are: 'ohai' version '>= 4.0.0'
+[root@chefwork cookbooks]# knife cookbook site download ohai
+Downloading ohai from Supermarket at version 5.2.0 to /root/chef-repo/cookbooks/ohai-5.2.0.tar.gz
+Cookbook saved: /root/chef-repo/cookbooks/ohai-5.2.0.tar.gz
+[root@chefwork cookbooks]# tar -xvf ohai-5.2.0.tar.gz
+ohai/.foodcritic
+ohai/README.md
+ohai/CHANGELOG.md
+ohai/CONTRIBUTING.md
+ohai/metadata.json
+ohai/libraries/hint_helpers.rb
+ohai/libraries/matchers.rb
+ohai/libraries/plugin_helpers.rb
+ohai/recipes/default.rb
+ohai/resources/hint.rb
+ohai/resources/plugin.rb
+[root@chefwork cookbooks]#  knife cookbook upload ohai
+Uploading ohai           [5.2.0]
+Uploaded 1 cookbook.
+[root@chefwork cookbooks]#  knife cookbook upload windows
+Uploading windows        [3.4.0]
+Uploaded 1 cookbook.
+[root@chefwork cookbooks]#  knife cookbook upload homebrew
+Uploading homebrew       [4.2.0]
+Uploaded 1 cookbook.
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]# ls -ltr
+total 164
+drwxr-xr-x. 8 vagrant vagrant  4096 May 24  2017 java
+-rw-r--r--. 1 root    root      588 Oct 28 13:53 chefignore
+drwxr-xr-x. 6 root    root       88 Nov  3 15:04 starter
+drwxr-xr-x. 6 root    root      168 Nov  3 19:34 test
+drwxr-xr-x. 7 root    root      202 Nov  3 19:59 git_cookbook
+drwxr-xr-x. 7 root    root      171 Nov  3 20:16 iptables
+drwxr-xr-x. 7 root    root      199 Nov  6 10:47 apache
+drwxr-xr-x. 2 root    root       62 Nov 23 13:36 BAK.pv
+-rw-------. 1 root    root     9723 Nov 23 13:37 openssl-7.1.0.tar.gz
+-rw-------. 1 root    root    38104 Nov 23 13:37 java-1.50.0.tar.gz
+-rw-------. 1 root    root     7597 Nov 23 13:38 chef-sugar-3.6.0.tar.gz
+-rw-------. 1 root    root    19923 Nov 23 13:38 apt-6.1.4.tar.gz
+drwxr-xr-x. 6 root    root      195 Nov 23 13:39 openssl
+drwxr-xr-x. 8 root    root      184 Nov 23 13:39 apt
+drwxr-xr-x. 3 root    root      102 Nov 23 13:39 chef-sugar
+-rw-------. 1 root    root    56944 Nov 23 13:43 windows-3.4.0.tar.gz
+-rw-------. 1 root    root     8971 Nov 23 13:44 homebrew-4.2.0.tar.gz
+drwxr-xr-x. 6 root    root      176 Nov 23 13:44 homebrew
+drwxr-xr-x. 8 root    root      225 Nov 23 13:44 windows
+-rw-------. 1 root    root     7226 Nov 23 13:45 ohai-5.2.0.tar.gz
+drwxr-xr-x. 5 root    root      155 Nov 23 13:45 ohai
+[root@chefwork cookbooks]# knife cookbook site download tomcat
+Downloading tomcat from Supermarket at version 3.0.0 to /root/chef-repo/cookbooks/tomcat-3.0.0.tar.gz
+Cookbook saved: /root/chef-repo/cookbooks/tomcat-3.0.0.tar.gz
+[root@chefwork cookbooks]# tar -xvf tomcat-3.0.0.tar.gz
+tomcat/README.md
+tomcat/CHANGELOG.md
+tomcat/CONTRIBUTING.md
+tomcat/metadata.json
+tomcat/libraries/matchers.rb
+tomcat/libraries/service_helpers.rb
+tomcat/recipes/default.rb
+tomcat/resources/service_systemd.rb
+tomcat/resources/install.rb
+tomcat/resources/service_sysv_init.rb
+tomcat/resources/service_upstart.rb
+tomcat/templates/setenv.erb
+tomcat/templates/init_upstart.erb
+tomcat/templates/init_sysv.erb
+tomcat/templates/init_systemd.erb
+[root@chefwork cookbooks]#  knife cookbook upload tomcat
+Uploading tomcat         [3.0.0]
+Uploaded 1 cookbook.
+[root@chefwork cookbooks]# cd ../chef-r^C
+[root@chefwork cookbooks]#
+[root@chefwork cookbooks]# cd ../
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]#
+[root@chefwork chef-repo]# knife node run_list add chefn2"role[v-tomcat]"
+ERROR: URI::InvalidURIError: bad URI(is not URI?): https://api.chef.io/organizations/qst/nodes/chefn2role[v-tomcat]
+[root@chefwork chef-repo]# knife node run_list add chefn2 "role[v-tomcat]"
+chefn2:
+  run_list: role[v-tomcat]
+[root@chefwork chef-repo]#
+
+
+
+on CHEFN2
+
+Chef Client finished, 1/1 resources updated in 10 seconds
+[vagrant@chefn1 chef]$
+
+
+[root@chefn2 jre]#  chef-client
+Starting Chef Client, version 13.6.4
+resolving cookbooks for run list: ["apt", "chef-sugar", "ohai", "windows", "java", "                                    openssl", "tomcat"]
+Synchronizing Cookbooks:
+  - chef-sugar (3.6.0)
+  - apt (6.1.4)
+  - ohai (5.2.0)
+  - windows (3.4.0)
+  - homebrew (4.2.0)
+  - java (1.50.0)
+  - openssl (7.1.0)
+  - tomcat (3.0.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Recipe: chef-sugar::default
+  * chef_gem[chef-sugar] action install (up to date)
+[2017-11-23T14:19:00+00:00] WARN: The Ohai cookbook default recipe has no content as                                     of the 4.0 release. See the readme for instructions on using the custom resources.
+[2017-11-23T14:19:00+00:00] WARN: The windows::default recipe has been deprecated. T                                    he gems previously installed in this recipe ship in the Chef MSI.
+[2017-11-23T14:19:00+00:00] WARN: The default tomcat recipe does nothing. See the re                                    adme for information on using the tomcat resources
+  Converging 17 resources
+Recipe: apt::default
+  * file[/var/lib/apt/periodic/update-success-stamp] action nothing (skipped due to                                     action :nothing)
+  * apt_update[periodic] action periodic (up to date)
+  * execute[apt-get update] action nothing (skipped due to action :nothing)
+  * execute[apt-get autoremove] action nothing (skipped due to action :nothing)
+  * execute[apt-get autoclean] action nothing (skipped due to action :nothing)
+  * directory[/var/cache/local] action create (skipped due to only_if)
+  * directory[/var/cache/local/preseeding] action create (skipped due to only_if)
+  * template[/etc/apt/apt.conf.d/10dpkg-options] action create (skipped due to only_                                    if)
+  * template[/etc/apt/apt.conf.d/10recommends] action create (skipped due to only_if                                    )
+  * yum_package[apt-transport-https] action install (skipped due to only_if)
+Recipe: chef-sugar::default
+  * chef_gem[chef-sugar] action install (up to date)
+Recipe: java::notify
+  * log[jdk-version-changed] action nothing (skipped due to action :nothing)
+Recipe: java::openjdk
+  * yum_package[java-1.6.0-openjdk] action install
+    - install version 1.6.0.41-1.13.13.1.el7_3 of package java-1.6.0-openjdk
+Recipe: java::notify
+  * log[jdk-version-changed] action write
+
+Recipe: java::openjdk
+  * yum_package[java-1.6.0-openjdk-devel] action install
+    - install version 1.6.0.41-1.13.13.1.el7_3 of package java-1.6.0-openjdk-devel
+Recipe: java::notify
+  * log[jdk-version-changed] action write
+
+Recipe: java::openjdk
+  * java_alternatives[set-java-alternatives] action set
+    - Add alternative for appletviewer
+    - Add alternative for apt
+    - Add alternative for extcheck
+    - Add alternative for idlj
+    - Add alternative for jar
+    - Add alternative for jarsigner
+    - Add alternative for java
+    - Add alternative for javac
+    - Add alternative for javadoc
+    - Add alternative for javah
+    - Add alternative for javap
+    - Add alternative for jconsole
+    - Add alternative for jdb
+    - Add alternative for jhat
+    - Add alternative for jinfo
+    - Add alternative for jmap
+    - Add alternative for jps
+    - Add alternative for jrunscript
+    - Add alternative for jsadebugd
+    - Add alternative for jstack
+    - Add alternative for jstat
+    - Add alternative for jstatd
+    - Add alternative for keytool
+    - Add alternative for native2ascii
+    - Add alternative for orbd
+    - Add alternative for pack200
+    - Add alternative for policytool
+    - Add alternative for rmic
+    - Add alternative for rmid
+    - Add alternative for rmiregistry
+    - Add alternative for schemagen
+    - Add alternative for serialver
+    - Add alternative for servertool
+    - Add alternative for tnameserv
+    - Add alternative for unpack200
+    - Add alternative for wsgen
+    - Add alternative for wsimport
+    - Add alternative for xjc
+Recipe: java::set_java_home
+  * directory[/etc/profile.d] action create (up to date)
+  * template[/etc/profile.d/jdk.sh] action create
+    - create new file /etc/profile.d/jdk.sh
+    - update content in file /etc/profile.d/jdk.sh from none to 778ff5
+    --- /etc/profile.d/jdk.sh   2017-11-23 14:20:54.130255103 +0000
+    +++ /etc/profile.d/.chef-jdk20171123-4289-1va03dw.sh        2017-11-23 14:20:54.128255194 +0000
+    @@ -1 +1,2 @@
+    +export JAVA_HOME=/usr/lib/jvm/java-1.6.0
+    - change mode from '' to '0755'
+    - restore selinux security context
+
+Running handlers:
+Running handlers complete
+Chef Client finished, 6/20 resources updated in 02 minutes 05 seconds
+[root@chefn2 jre]#  ps -ec | grep -i apach
+[root@chefn2 jre]#  ps -ef | grep -i apach
+root      5438  2812  0 14:21 pts/0    00:00:00 grep --color=auto -i apach
+[root@chefn2 jre]#  ps -ef | grep -i tomc
+root      5440  2812  0 14:21 pts/0    00:00:00 grep --color=auto -i tomc
+[root@chefn2 jre]# echo $JAVA_HOME
+/opt/jdk1.8.0_152
+[root@chefn2 jre]# ls -l /usr/lib/jvm/java-1.6.0
+lrwxrwxrwx. 1 root root 32 Nov 23 14:20 /usr/lib/jvm/java-1.6.0 -> /etc/alternatives/java_sdk_1.6.0
+[root@chefn2 jre]# java -version
+java version "1.6.0_41"
+OpenJDK Runtime Environment (IcedTea6 1.13.13) (rhel-1.13.13.1.el7_3-x86_64)
+OpenJDK 64-Bit Server VM (build 23.41-b41, mixed mode)
+[root@chefn2 jre]#
+
+
