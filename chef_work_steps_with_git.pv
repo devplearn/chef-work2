@@ -1409,3 +1409,21 @@ OpenJDK 64-Bit Server VM (build 23.41-b41, mixed mode)
 [root@chefn2 jre]#
 
 
+
+ot@chefwork .ssh]# ls -al
+total 8
+drwx------. 2 vagrant vagrant  48 Nov  6 09:12 .
+drwx------. 3 vagrant vagrant  95 Nov  3 15:13 ..
+-rw-------. 1 vagrant vagrant 389 Nov  3 14:36 authorized_keys
+-rw-r--r--. 1 vagrant vagrant 348 Nov  6 09:42 known_hosts
+[root@chefwork .ssh]# chmod 400 authorized_keys
+[root@chefwork .ssh]# ls -al
+total 8
+drwx------. 2 vagrant vagrant  48 Nov  6 09:12 .
+drwx------. 3 vagrant vagrant  95 Nov  3 15:13 ..
+-r--------. 1 vagrant vagrant 389 Nov  3 14:36 authorized_keys
+-rw-r--r--. 1 vagrant vagrant 348 Nov  6 09:42 known_hosts
+[root@chefwork .ssh]# pwd
+/home/vagrant/.ssh
+[root@chefwork .ssh]#
+
